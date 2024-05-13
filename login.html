@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css"
+        integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Login</title>
+    <style>
+        * {
+            font-family: 'poppins';
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        main {
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .left-section {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .left-section img {
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+        }
+
+        .login-container {
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 13rem;
+            padding: 0 2rem;
+        }
+
+        form {
+            width: 380px;
+
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            border-bottom: 2px solid #d9d9d9;
+            padding-bottom: 5px;
+            align-items: center;
+            margin: 30px 0px;
+        }
+
+        .input-group i {
+            padding: 0px 15px;
+            font-size: 1.1rem;
+            color: rgba(128, 128, 128, 0.671);
+        }
+
+        .form-group {
+            flex: 1;
+            position: relative;
+        }
+
+        .form-group input {
+            border: none;
+            background-color: transparent;
+            width: 100%;
+            padding-left: 0px;
+            padding-bottom: 10px;
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        .form-group input:focus {
+            outline: none;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: 25%;
+            transform: translateY(-20%);
+            z-index: -1;
+            color: rgba(84, 84, 84, 0.818);
+            transition: .3s;
+        }
+
+        .focus label {
+            top: -17px;
+            font-size: 0.99rem;
+            color: rgba(84, 84, 84, 0.708);
+        }
+
+        .password-container {
+            margin-bottom: 5px;
+        }
+
+        /*-------------------------*/
+        .input-group:before,
+        .input-group:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            width: 0%;
+            height: 4px;
+            background-color: rgb(49, 200, 255);
+            transition: .4s;
+            border-radius: 40px 0px 0px 40px;
+        }
+
+        .input-group:before {
+            right: 50%;
+        }
+
+        .input-group:after {
+            left: 50%;
+            border-radius: 0px 40px 40px 0px;
+        }
+
+        .input-group.focus:before,
+        .input-group.focus:after {
+            width: 50%;
+        }
+
+        .forgot-password {
+            text-align: right;
+        }
+
+        .forgot-password a {
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .login-btn-container input {
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            color: #fff;
+            background-color: rgb(52, 202, 247);
+            font-size: 1.2rem;
+            padding: 0.5em 0em;
+            border-radius: 40px;
+            border: none;
+        }
+
+        .sign-up {
+            color: gray;
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .sign-up a {
+            text-decoration: none;
+        }
+
+        .extra-option {
+            margin-top: 30px;
+            width: 390px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .or-container {
+
+            position: relative;
+            width: 100%;
+            text-align: center;
+            color: gray;
+        }
+
+        .or-container::before,
+        .or-container::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 45%;
+            height: 2px;
+            background-color: rgba(191, 191, 191, 0.544);
+        }
+
+        .or-container::before {
+            left: 0;
+        }
+
+        .or-container::after {
+            right: 0;
+        }
+
+        .extra-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .bgc-img {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+        }
+
+
+
+
+
+        /*-------------------------*/
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- <div class="bgc-img">
+            <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 390" xmlns="http://www.w3.org/2000/svg"
+                class="transition duration-300 ease-in-out delay-150">
+                <defs>
+                    <linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+                        <stop offset="5%" stop-color="#8ed1fc"></stop>
+                        <stop offset="95%" stop-color="#0693e3"></stop>
+                    </linearGradient>
+                </defs>
+                <path
+                    d="M 0,400 L 0,60 C 79.03589743589743,54.15 158.07179487179485,48.3 230,58 C 301.92820512820515,67.7 366.74871794871797,92.95000000000002 447,129 C 527.251282051282,165.04999999999998 622.9333333333334,211.89999999999998 716,237 C 809.0666666666666,262.1 899.5179487179487,265.45000000000005 969,290 C 1038.4820512820513,314.54999999999995 1086.9948717948719,360.29999999999995 1162,388 C 1237.0051282051281,415.70000000000005 1338.502564102564,425.35 1440,435 L 1440,400 L 0,400 Z"
+                    stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="0.265"
+                    class="transition-all duration-300 ease-in-out delay-150 path-0"></path>
+                <defs>
+                    <linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+                        <stop offset="5%" stop-color="#8ed1fc"></stop>
+                        <stop offset="95%" stop-color="#0693e3"></stop>
+                    </linearGradient>
+                </defs>
+                <path
+                    d="M 0,400 L 0,140 C 58.889743589743574,145.6653846153846 117.77948717948715,151.33076923076922 207,161 C 296.22051282051285,170.66923076923078 415.771794871795,184.3423076923077 497,208 C 578.228205128205,231.6576923076923 621.1333333333333,265.3 707,287 C 792.8666666666667,308.7 921.6948717948717,318.4576923076923 1003,349 C 1084.3051282051283,379.5423076923077 1118.0871794871796,430.8692307692308 1183,462 C 1247.9128205128204,493.1307692307692 1343.9564102564102,504.0653846153846 1440,515 L 1440,400 L 0,400 Z"
+                    stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="0.4"
+                    class="transition-all duration-300 ease-in-out delay-150 path-1"></path>
+                <defs>
+                    <linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+                        <stop offset="5%" stop-color="#8ed1fc"></stop>
+                        <stop offset="95%" stop-color="#0693e3"></stop>
+                    </linearGradient>
+                </defs>
+                <path
+                    d="M 0,400 L 0,220 C 91.73333333333332,193.5448717948718 183.46666666666664,167.0897435897436 261,191 C 338.53333333333336,214.9102564102564 401.8666666666667,289.1858974358974 484,320 C 566.1333333333333,350.8141025641026 667.0666666666666,338.16666666666674 750,352 C 832.9333333333334,365.83333333333326 897.866666666667,406.14743589743586 973,442 C 1048.133333333333,477.85256410256414 1133.4666666666665,509.24358974358984 1213,534 C 1292.5333333333335,558.7564102564102 1366.2666666666669,576.8782051282051 1440,595 L 1440,400 L 0,400 Z"
+                    stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="0.53"
+                    class="transition-all duration-300 ease-in-out delay-150 path-2"></path>
+                <defs>
+                    <linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+                        <stop offset="5%" stop-color="#8ed1fc"></stop>
+                        <stop offset="95%" stop-color="#0693e3"></stop>
+                    </linearGradient>
+                </defs>
+                <path
+                    d="M 0,400 L 0,300 C 84.17435897435897,288.11153846153843 168.34871794871793,276.2230769230769 252,285 C 335.65128205128207,293.7769230769231 418.7794871794871,323.2192307692308 506,350 C 593.2205128205129,376.7807692307692 684.5333333333333,400.8999999999999 747,435 C 809.4666666666667,469.1000000000001 843.0871794871796,513.1807692307692 927,535 C 1010.9128205128204,556.8192307692308 1145.1179487179486,556.3769230769232 1239,576 C 1332.8820512820514,595.6230769230768 1386.4410256410256,635.3115384615385 1440,675 L 1440,400 L 0,400 Z"
+                    stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1"
+                    class="transition-all duration-300 ease-in-out delay-150 path-3"></path>
+            </svg>
+        </div> -->
+        <section class="login-container">
+            <section class="left-section">
+                <img src="./undraw_online_test_re_kyfx.svg" alt="">
+
+            </section>
+            <section class="login-content">
+                <div class="login-content">
+                    <form action="">
+                        <h1>Welcome Back,</h1>
+                        <div class="email-container input-group">
+                            <div class="icon-container">
+                                <i class='bx bxs-envelope'></i>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Email</label>
+                                <input type="text" class="input">
+                            </div>
+                        </div>
+                        <div class="password-container input-group">
+                            <div class="icon-container">
+                                <i class='bx bxs-key'></i>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Password</label>
+                                <input type="text" class="input">
+                            </div>
+                        </div>
+                        <p class="forgot-password"><a href="">Forgot password?</a></p>
+                        <div class="login-btn-container">
+                            <input type="submit" value="Login">
+                        </div>
+                        <p class="sign-up">Don't have an Account yet ? <a href=""> Create Now</a></p>
+                    </form>
+                    <div class="extra-option">
+                        <span class="or-container">
+                            or
+                        </span>
+                        <div class="extra-links">
+                            <a href=""><img src="https://cdn.freebiesupply.com/logos/large/2x/facebook-logo-2019.png"
+                                    width="30"></a>
+                            <a href=""><img
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUy9xImRwuUbBnbJ0QgHs5GEcWDeKLqeaOpd2jLQ7SWg&s"
+                                    width="30" alt=""></a>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </section>
+    </main>
+    <script>
+        const inputs = document.querySelectorAll(".input");
+
+
+        function addcl() {
+            let parent = this.parentNode.parentNode;
+            parent.classList.add("focus");
+        }
+
+        function remcl() {
+            let parent = this.parentNode.parentNode;
+            if (this.value == "") {
+                parent.classList.remove("focus");
+            }
+        }
+
+
+        inputs.forEach(input => {
+            input.addEventListener("focus", addcl);
+            input.addEventListener("blur", remcl);
+        });
+
+    </script>
+
+
+
+</body>
+
+</html>
