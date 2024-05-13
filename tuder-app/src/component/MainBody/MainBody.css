@@ -1,0 +1,226 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main>* {
+    width: var(--content-width);
+}
+
+.landing-section {
+    margin-top: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.landing-msg {
+    font-size: 3.2rem;
+}
+
+.landing-msg span {
+    color: red;
+}
+
+span.msg-second-line {
+    display: block;
+    text-align: center;
+    font-size: 3.4rem;
+    color: var(--primary-txt-color);
+}
+
+.landing-msg2 {
+    margin-top: 15px;
+    width: 50%;
+    text-align: center;
+    margin-bottom: 50px;
+    color: gray;
+    font-size: 0.9rem;
+}
+
+.search-box {
+    width: 50%;
+    background-color: var(--primary-color);
+    display: flex;
+    border-radius: 40px;
+    align-items: center;
+    border: 1px solid gray;
+}
+
+.search-box input {
+    background-color: var(--secondary-color);
+    flex: 1;
+    font-size: 1.1rem;
+    padding: 5px 20px;
+    border-radius: 40px 0px 0px 40px;
+    outline: none;
+    border: none;
+}
+
+.search-box i {
+    cursor: pointer;
+    padding: 0px 20px;
+    color: var(--secondary-txt-color);
+    font-size: 1.3rem;
+}
+
+.hot-searches-container {
+    width: 50%;
+    padding: 0px 10px;
+
+}
+
+.hot-searches {
+    margin-top: 15px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: auto 1fr;
+    padding: 0px 10px;
+    align-content: center;
+}
+
+.hot-searches span {
+    padding-top: 4px;
+}
+
+.hot-search-link {
+    cursor: pointer;
+    font-size: 0.8rem;
+    background-color: rgba(196, 196, 196, 0.403);
+    padding: 0.4em 0.8em !important;
+    border-radius: 20px;
+    line-height: 40px;
+}
+
+.hot-search-link:hover {
+    background-color: rgba(152, 152, 152, 0.403);
+
+}
+.data-numbers-container {
+    margin-top: 75px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.data-numbers {
+    width: var(--content-width);
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0px;
+}
+
+.data-number-card {
+    text-align: center;
+}
+
+.data-number-card h1 {
+    font-size: 2.3rem;
+}
+.why-tuder {
+    margin-top: 50px;
+}
+
+.feature-card-container {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-items: center;
+    text-align: center;
+    gap: 50px;
+}
+
+.feature-card {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 3;
+    gap: 0px;
+}
+
+.feature-image-container {
+    text-align: center;
+}
+
+.feature-image-container img {
+    height: 150px;
+    width: 150px;
+    object-fit: contain;
+    border-radius: 1000px;
+}
+
+.feature-name {
+    margin-top: 8px;
+    font-size: 1.4rem;
+}
+
+.find-apply-section-container {
+    margin-top: 50px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 30px 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.find-apply-section-content {
+    width: var(--content-width);
+    text-align: center;
+}
+
+.find-apply-section-content h3 {
+    font-size: 2rem;
+}
+
+.find-apply-section-content p {
+    color: rgb(190, 190, 190);
+    margin-bottom: 20px;
+}
+
+.find-apply-section-content button {
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    font-size: 1rem;
+    padding: 0.4em 0.8em;
+    border-radius: 5PX;
+}
+
+.find-apply-section-content button:hover {
+    color: black;
+    background-color: white;
+    transition: .3s;
+
+}
+
+.how-book-content {
+    margin-top: 50px;
+}
+
+.how-book-content h2 {
+    font-size: 2rem;
+}
+
+.how-book-content p {
+    margin-bottom: 15px;
+}
+
+.booking-tutorial-media {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* .booking-tutorial {
+    width: 350px;
+} */
+
+.booking-tutorial img {
+    display: block;
+    width: 100%;
+
+}

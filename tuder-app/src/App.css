@@ -1,0 +1,19 @@
+:root {
+  --primary-color: black;
+  --secondary-color: white;
+  --primary-txt-color: black;
+  --secondary-txt-color: white;
+  --normal-txt-color: rgb(84, 84, 84);
+  --secondary-bg-color: teal;
+  --content-width: 1200px;
+}
+
+* {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(240, 240, 240);
+}
