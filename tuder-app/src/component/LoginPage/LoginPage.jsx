@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import './LoginPage.css'
 
 
@@ -7,8 +7,12 @@ function LoginPage() {
 
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
+    const [isValid, setIsValid] = useState(true);
+    const [isPassValid, setIsPassValid] = useState(true);
 
-    const handleEdit = (event)=>{
+    
+
+    const handleEdit = (event)=>{   
         const grandParent  = event.target.parentNode.parentNode;
         grandParent.classList.add('focus');
         
@@ -16,18 +20,39 @@ function LoginPage() {
 
     const handleReverse = (event)=>{
         const grandParent = event.target.parentNode.parentNode;
-        if (this.value == "") {
-            parent.classList.remove("focus");
+        if (event.target.value !== "") {
+            console.log(event.target.value);
+            grandParent.classList.add("focus");
+        }else{
+            grandParent.classList.remove("focus");
+
         }
     }
     const handleSubmission = (event)=>{
-        
-        if(userName && password){
-            console.log("Niceely done")
-        }else{
+
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if(!emailRegex.test(userName)){
             event.preventDefault();
+            setIsValid(false);
+            
+        }else{
+            console.log("Good job");
         }
+
+        if(password.length<1){
+            event.preventDefault();
+            setIsPassValid(false);
+        }
+        
+       
     }
+
+    const handleChange = (event) => {
+        setUserName(event.target.value);     
+        setIsValid(true);   
+      };
   return (
     <>
     <main>
@@ -39,14 +64,16 @@ function LoginPage() {
                 <div className="login-content">
                     <form action="">
                         <h1>Welcome Back,</h1>
-                        <div className="email-container input-group">
+                        <div className='email-container input-group'>
                             <div className="icon-container">
                                 <i className='bx bxs-envelope'></i>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="">Email</label>
-                                <input type="text" onClick={handleEdit} value={userName} onChange={(event)=>setUserName(event.target.value)}  onBlur={handleReverse} className="input"/>
+                                <input type="text" onClick={handleEdit} value={userName} onChange={()=>handleChange(event)}  onBlur={handleReverse}  className="input" />
                             </div>
+                            <span className={`${!isValid? 'error-message':'hide-message'}`}>Invalid Email</span>
+
                         </div>
                         <div className="password-container input-group">
                             <div className="icon-container">
@@ -54,8 +81,10 @@ function LoginPage() {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="">Password</label>
-                                <input type="password" onClick={handleEdit} value={password} onChange={(event)=> setPassword(event.target.value)} onBlur={handleReverse}  className="input"/>
+                                <input type="password" onClick={handleEdit} value={password} onChange={(event)=>{setPassword(event.target.value); setIsPassValid(true)}} onBlur={handleReverse}  className="input"/>
                             </div>
+                            <span className={`${!isPassValid? 'error-message':'hide-message'}`}>Invalid Password</span>
+
                         </div>
                         <p className="forgot-password"><a href="">Forgot password?</a></p>
                         <div className="login-btn-container">

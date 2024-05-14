@@ -84,6 +84,7 @@ form {
     color: rgba(84, 84, 84, 0.708);
 }
 
+
 .password-container {
     margin-bottom: 5px;
 }
@@ -194,4 +195,11 @@ form {
     z-index: -1;
     width: 100%;
 }
-
+/* validation */
+.error-message{
+    font-size: 10px;
+    color: red;
+}
+.hide-message{
+    display: none;
+}
