@@ -1,24 +1,16 @@
-import Navbar from "./component/Navbar/Navbar";
-
-import "./App.css";
-import MainBody from "./component/MainBody/MainBody";
-import { useContext, useState } from "react";
-import { ClickedContext } from "./component/Context/Context";
-import LoginPage from "./component/LoginPage/LoginPage";
+import React from 'react';
+import Navbar from './component/Navbar/Navbar';
+import './App.css';
+import TutorLogin from './component/Tutor/TutorLogin';
 
 function App() {
-  const [homeStatus,setHomeStatus] = useState(true);
-
   return (
-    <>
-      <ClickedContext.Provider value={{ homeStatus, setHomeStatus }}>
-        <Navbar />
-        {
-          homeStatus? <MainBody/> : <LoginPage/>
-        }
-        
-      </ClickedContext.Provider>
-    </>
+    <div className="App">
+      {/* <Navbar /> */}
+      <TutorLogin/>
+      
+    </div>
+
   );
 }
 

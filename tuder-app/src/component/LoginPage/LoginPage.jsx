@@ -1,14 +1,20 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState,useRef, useEffect} from 'react'
+import Banner from '../../assets/banner.jpeg'
 import './LoginPage.css'
-
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 
 function LoginPage() {
 
+    const inputRef = useRef(null);//give one name and initialize it null at first
+;
 
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [isValid, setIsValid] = useState(true);
     const [isPassValid, setIsPassValid] = useState(true);
+    const [toggle,setToggle] = useState(true);
+
 
     
 
@@ -29,6 +35,7 @@ function LoginPage() {
         }
     }
     const handleSubmission = (event)=>{
+        event.preventDefault();
 
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -48,6 +55,21 @@ function LoginPage() {
         
        
     }
+    const handleToggle = (event)=>{
+        !toggle? setToggle(true):setToggle(false);
+
+        const newValue = inputRef.current;  
+        
+        console.log(newValue);
+        if(newValue.type ==="password"){
+            newValue.type = 'text';
+        }else{
+            newValue.type = "password";
+        }
+
+
+    }
+    
 
     const handleChange = (event) => {
         setUserName(event.target.value);     
@@ -55,14 +77,14 @@ function LoginPage() {
       };
   return (
     <>
-    <main>
+    <main id='login-page'>
         <section className="login-container">
             <section className="left-section">
-            <img src="../.././assets/undraw_online_test_re_kyfx.svg" alt="none"/>
+            <img id='banner-image' src={Banner} alt="none"/>
             </section>
             <section className="login-content">
                 <div className="login-content">
-                    <form action="">
+                    <form>
                         <h1>Welcome Back,</h1>
                         <div className='email-container input-group'>
                             <div className="icon-container">
@@ -81,8 +103,10 @@ function LoginPage() {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="">Password</label>
-                                <input type="password" onClick={handleEdit} value={password} onChange={(event)=>{setPassword(event.target.value); setIsPassValid(true)}} onBlur={handleReverse}  className="input"/>
+                                <input ref={inputRef} type="password" onClick={handleEdit} value={password} onChange={(event)=>{setPassword(event.target.value); setIsPassValid(true)}} onBlur={handleReverse}  className="input"/>
                             </div>
+                            <i onClick={handleToggle} className={`fa-regular fa-eye${!toggle?'-slash':''}`}></i>
+
                             <span className={`${!isPassValid? 'error-message':'hide-message'}`}>Invalid Password</span>
 
                         </div>
@@ -99,9 +123,18 @@ function LoginPage() {
                         <div className="extra-links">
                             <a href=""><img src="https://cdn.freebiesupply.com/logos/large/2x/facebook-logo-2019.png"
                                     width="30"/></a>
-                            <a href=""><img
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUy9xImRwuUbBnbJ0QgHs5GEcWDeKLqeaOpd2jLQ7SWg&s"
-                                    width="30" alt=""/></a>
+                            <GoogleLogin 
+                                onSuccess={(credentialResponse)=>{
+                                const credentialResponseDecoded = jwtDecode(credentialResponse.credential);
+                                console.log(credentialResponseDecoded);
+                                setGoogleEmail(credentialResponseDecoded.email);
+                                console.log(googleEmail);
+                            }}
+                            onError={()=>{
+                                console.log("Login Failed");
+                            }}
+                            />
+                                    
                         </div>
                     </div>
 

@@ -1,0 +1,67 @@
+.ask-user-type {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+}
+
+.ask-user-type-content {
+    border-radius: 10px;
+    padding: 25px 15px;
+}
+
+.ask-user-type-content h1 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    text-align: center;
+
+}
+
+.user-type-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.user-type-content a {
+    box-sizing: content-box;
+    box-shadow: 0px 0px 17px -7px rgba(0, 0, 0, 0.299);
+    border-radius: 4px;
+    color: rgb(53, 53, 53);
+    width: 100%;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 1em 0.8em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: fit-content;
+    transition: .2s;
+}
+
+.user-type-content a:hover {
+    transform: scale(1.06);
+}
+
+.user-img-container {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.user-img-container img {
+    display: block;
+    height: 100%;
+    object-fit: contain;
+}
+
+.user-type-content a:hover {
+    border-color: black;
+    color: black;
+}

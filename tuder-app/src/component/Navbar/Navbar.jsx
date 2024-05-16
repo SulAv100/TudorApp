@@ -1,46 +1,34 @@
-import React from "react";
-import "./NavBar.css";
-import { useContext, useState } from "react";
-import { ClickedContext } from "../Context/Context";
-import { Form, useNavigate } from "react-router-dom";
-import MainBody from "../MainBody/MainBody";
-import LoginPage from "../LoginPage/LoginPage";
+import React from 'react';
+import './NavBar.css';
+import { Link, Routes, Route } from 'react-router-dom';
+import MainBody from '../MainBody/MainBody';
+import LoginPage from '../LoginPage/LoginPage';
+import Signup from '../Signup/Signup';
+
 function Navbar() {
-
-  const { setHomeStatus } = useContext(ClickedContext);
-
-  const handleClickStatus = (event) => {
-    const data = event.target.textContent;
-    if(data !== 'Home'){
-        setHomeStatus(false);
-        
-    }else{
-        setHomeStatus(true);
-    }
-  };
-
-
- 
   return (
     <>
-      <div className="overlay"></div>
       <header>
         <nav>
           <div className="logo-container">
             <img src="" alt="logo" />
           </div>
           <ul className="nav-links">
-                <li><span onClick={handleClickStatus}>Home</span></li>
-                <li><span>Find tutor</span></li>
-                <li><span>Become a tutor</span></li>
-                <li><span>Community</span></li>
-                <li onClick={handleClickStatus} className="login-btn"><button>Login</button></li>
-            </ul>
-
-          
+            <li><Link to="/"><span>Home</span></Link></li>
+            <li><span>Find tutor</span></li>
+            <li><span>Become a tutor</span></li>
+            <li><span>Community</span></li>
+            <li className="login-btn"><Link to="/login"><button>Login</button></Link></li>
+            <li className="signup-btn"><Link to="/signup"><button>Signup</button></Link></li>
+          </ul>
         </nav>
       </header>
-     
+
+      <Routes>
+        <Route path="/" element={<MainBody />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
     </>
   );
 }

@@ -4,9 +4,14 @@
     justify-content: flex-start;
     align-items: center;
 }
+#login-page{
+    background-color: white;
+}
 
 .left-section img {
-    width: 400px;
+    height: 100%;
+    width: 500px;
+    border-radius: 20px;
 }
 
 h1 {
@@ -202,4 +207,10 @@ form {
 }
 .hide-message{
     display: none;
+}
+.fa-eye{
+    cursor: pointer;
+}
+.fa-eye-slash{
+    cursor: pointer;
 }
