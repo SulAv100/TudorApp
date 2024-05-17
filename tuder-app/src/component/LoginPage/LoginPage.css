@@ -4,9 +4,7 @@
     justify-content: flex-start;
     align-items: center;
 }
-#login-page{
-    background-color: white;
-}
+
 
 .left-section img {
     height: 100%;
@@ -25,7 +23,6 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 13rem;
@@ -200,7 +197,6 @@ form {
     z-index: -1;
     width: 100%;
 }
-/* validation */
 .error-message{
     font-size: 10px;
     color: red;
@@ -210,7 +206,12 @@ form {
 }
 .fa-eye{
     cursor: pointer;
+    color: white;
 }
-.fa-eye-slash{
-    cursor: pointer;
-}
+.input-group i.fa-eye,
+.input-group i.fa-eye-slash {
+    color: rgba(128, 128, 128, 0.671);}
+
+
+
+

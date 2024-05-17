@@ -1,19 +1,22 @@
-import React,{useState,useRef, useEffect} from 'react'
+import React,{useState,useRef,useContext} from 'react'
 import Banner from '../../assets/banner.jpeg'
 import './LoginPage.css'
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
+import {Link} from 'react-router-dom';
+import { ClickedContext } from '../Context/Context';
+
 
 function LoginPage() {
 
     const inputRef = useRef(null);//give one name and initialize it null at first
 ;
 
+    const {toggle, setToggle} =  useContext(ClickedContext)
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [isValid, setIsValid] = useState(true);
     const [isPassValid, setIsPassValid] = useState(true);
-    const [toggle,setToggle] = useState(true);
 
 
     
@@ -77,6 +80,7 @@ function LoginPage() {
       };
   return (
     <>
+    <body>
     <main id='login-page'>
         <section className="login-container">
             <section className="left-section">
@@ -107,6 +111,7 @@ function LoginPage() {
                             </div>
                             <i onClick={handleToggle} className={`fa-regular fa-eye${!toggle?'-slash':''}`}></i>
 
+
                             <span className={`${!isPassValid? 'error-message':'hide-message'}`}>Invalid Password</span>
 
                         </div>
@@ -114,7 +119,7 @@ function LoginPage() {
                         <div className="login-btn-container">
                             <input onClick={handleSubmission} type="submit" value="Login"/>
                         </div>
-                        <p className="sign-up">Don't have an Account yet ? <a href=""> Create Now</a></p>
+                        <p className="sign-up">Don't have an Account yet ? <Link to="/tutorlogin"> Create Now</Link></p>
                     </form>
                     <div className="extra-option">
                         <span className="or-container">
@@ -142,6 +147,7 @@ function LoginPage() {
             </section>
         </section>
     </main>
+    </body>
     </>
 )
 }

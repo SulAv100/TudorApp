@@ -2,6 +2,7 @@ import React from 'react'
 import './Signup.css'
 import StudentImage from '../../assets/student.png'
 import Teacher from '../../assets/tutor.png'
+import {Link} from 'react-router-dom'
 
 
 function Signup() {
@@ -17,15 +18,14 @@ function Signup() {
                 What type Best Describes you?
             </h1>
             <div className="user-type-content">
-                <a href='.././StudentSignUp/StuSignUp.jsx' id="Istudent">
-                    <div className="user-img-container"> <img src={StudentImage}
-                            alt="not found"/>
+            <Link to="/tutorlogin" id="Istudent">
+                    <div class="user-img-container"> <img src={StudentImage} alt="student"/>
                     </div>
                     <h3>I am looking for a Tutor</h3>
-                </a>
+                </Link>
                 <a href="/teacherLogin" id="Itutor">
                     <div className="user-img-container">
-                        <img src={Teacher} alt="not available"/>
+                        <img src={Teacher} alt="not available"/>    
 
                     </div>
                     <h3>I am looking for student</h3>
